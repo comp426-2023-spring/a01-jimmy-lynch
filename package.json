@@ -1,0 +1,31 @@
+{
+  "name": "assignment-01-webserver",
+  "version": "0.0.1",
+  "description": "Webserver for Assignment 01 for Comp426",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js --port=5555"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2023-spring/a01-jimmy-lynch.git"
+  },
+  "keywords": [
+    "web",
+    "server",
+    "port",
+    "node",
+    "fs",
+    "args",
+    "http"
+  ],
+  "author": "jimmy-lynch",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/comp426-2023-spring/a01-jimmy-lynch/issues"
+  },
+  "homepage": "https://github.com/comp426-2023-spring/a01-jimmy-lynch#readme",
+  "dependencies": {
+    "minimist": "^1.2.7"
+  }
+}
