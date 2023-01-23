@@ -14,17 +14,6 @@ const port = minimist(process.argv.slice(2)).port || 3000;
 // The function must read a file located at `./public/index.html` and do some stuff with it.
 // The stuff that should be inside this function is all below.
 
-const data = fs.readFile('./public/index.html', 'utf8', (err, data) => {
-    if(err) {
-        console.error(err);
-        return;
-    }
-});
-
-const requestListenener = function (req, res) {
-    res.writeHead(200);
-    res.end(data);
-}
 // If there is an error, put it on the console error and return. 
 // Do not be nice about exiting.
 
@@ -34,18 +23,20 @@ const requestListenener = function (req, res) {
 // 1. status code 200, 
 // 2. set a header with content type `text/html`, and 
 // 3. end with the data that you are reading in from ./public/index.html.
-const server = http.createServer(requestListenener);
+const server = http.createServer(function(req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/html'})
+    fs.readFile('./public/index.html', 'utf8', (err, data) => {
+        if(err) {
+            console.error(err);
+            return;
+        }
+        res.end(data);
+    });
+});
+// Start the `server` const listening on the port defined by argument in your `port` const. 
+// Put the exact message `Server listening on port ${port}` on the console log. 
 server.listen(port, host, () => {
     console.log('Server listening on port ${port}');
 });
-
-
-
-
-// Start the `server` const listening on the port defined by argument in your `port` const. 
-// Put the exact message `Server listening on port ${port}` on the console log. 
-
-
-
 
 // That's it! You're all done!
